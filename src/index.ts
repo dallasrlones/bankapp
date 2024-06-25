@@ -14,7 +14,6 @@ app.use('/transactions', transactionsRouter);
 export const startServer = async () => {
   try {
     await createTables();
-    // await connectQueue();
     await startTransactionProcessor();
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
