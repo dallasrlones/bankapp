@@ -29,7 +29,7 @@ This is a simple bank program built with Node.js, TypeScript, PostgreSQL, and Ra
 
 3. Run the Tests:
 
-Open exec in the 'backend' container and run ```bash
+Open exec in the 'backend' container and run ```
     npm test
     ```
 
