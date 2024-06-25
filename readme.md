@@ -21,22 +21,17 @@ This is a simple bank program built with Node.js, TypeScript, PostgreSQL, and Ra
 ## Setup
 
 1. Clone the repository:
-
-    ```bash
-    git clone <repository_url>
-    cd <repository_directory>
-    ```
-
 2. Build and start the containers:
 
     ```bash
     docker-compose up --build
     ```
 
-3. Apply the database migrations:
+3. Run the Tests:
 
+Open exec in the 'backend' container and run
     ```bash
-    docker-compose exec postgres psql -U postgres -d simple_bank -f /path/to/migrations/001_create_tables.sql
+      npm test
     ```
 
 ## Running the Application
@@ -55,7 +50,7 @@ Once the containers are up and running, the application will be available on por
 
     ```json
     {
-      "owner": "John Doe",
+      "owner": "john.doe@test.com",
       "amount": 1000,
       "bank_id": 1
     }
@@ -71,7 +66,7 @@ Once the containers are up and running, the application will be available on por
 
     ```json
     {
-      "owner": "John Doe",
+      "owner": "john.doe@test.com",
       "amount": 500,
       "bank_id": 1
     }
@@ -87,8 +82,8 @@ Once the containers are up and running, the application will be available on por
 
     ```json
     {
-      "sourceOwner": "John Doe",
-      "targetOwner": "Jane Doe",
+      "sourceOwner": "john.doe@test.com",
+      "targetOwner": "jane.doe@test.com",
       "amount": 200,
       "bank_id": 1
     }
