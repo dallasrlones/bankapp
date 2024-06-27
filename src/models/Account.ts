@@ -55,6 +55,7 @@ export class Account {
   static async findByOwner(ownerId: string): Promise<Account | null> {
     const result = await pool.query('SELECT * FROM accounts WHERE owner = $1', [ownerId]);
     if (result.rows.length > 0) {
+      // need to change this so it returns the array of accounts for owner (email)
       const { id, owner, balance, type, bank_id } = result.rows[0];
       return new Account(id, owner, parseFloat(balance), type, bank_id);
     }

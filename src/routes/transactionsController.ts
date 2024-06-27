@@ -15,6 +15,7 @@ router.post('/deposit', async (req, res) => {
 router.post('/withdraw', async (req, res) => {
   const { owner, amount, account_type } = req.body;
 
+  // need to make sure we're in the right account
   const account = await Account.findByOwner(owner);
 
   if (!account) {
@@ -36,6 +37,7 @@ router.post('/withdraw', async (req, res) => {
 router.post('/transfer', async (req, res) => {
   const { sourceOwner, targetOwner, amount } = req.body;
 
+  // need to make sure we're in the right account
   const sourceAccount = await Account.findByOwner(sourceOwner);
   const targetAccount = await Account.findByOwner(targetOwner);
 
