@@ -29,9 +29,6 @@ router.post('/withdraw', async (req, res) => {
     return res.status(400).send('Insufficient funds');
   }
 
-  // account.balance -= amount;
-  // await account.save();
-
   await publishTransaction({ type: TransactionType.Withdraw, amount, accountId: account.id });
   res.send(`Withdraw transaction published and account updated with ID: ${account.id}`);
 });
@@ -49,12 +46,6 @@ router.post('/transfer', async (req, res) => {
   if (sourceAccount.balance < amount) {
     return res.status(400).send('Insufficient funds');
   }
-
-  sourceAccount.balance -= amount;
-  targetAccount.balance += amount;
-
-  // await sourceAccount.save();
-  // await targetAccount.save();
 
   await publishTransaction({ type: TransactionType.Transfer, amount, sourceAccountId: sourceAccount.id, targetAccountId: targetAccount.id });
   res.send(`Transfer transaction published from account ${sourceAccount.id} to account ${targetAccount.id}`);
